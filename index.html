@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Iqra | .NET MVC Developer &amp; Database Enthusiast</title>
+<meta name="description" content="Iqra is a final-year Computer Science student at Iqra University, Karachi, focused on .NET MVC full-stack development, SQL and database design, algorithms and software testing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c1726; --bg2:#0f1e31; --card:#132338; --card-h:#172a42;
+    --line:#223550; --text:#e7eef5; --muted:#9db1c4; --dim:#6f86a0;
+    --accent:#2ec4ad; --accent-2:#5fe0cb; --accent-bg:rgba(46,196,173,.10);
+    --radius:14px; --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .mono{font-family:"JetBrains Mono",ui-monospace,Consolas,monospace}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:20;background:rgba(12,23,38,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;font-size:18px;letter-spacing:-.3px}
+  .logo span{color:var(--accent)}
+  .links{display:flex;gap:28px;font-size:14px;color:var(--muted)}
+  .links a:hover{color:var(--text)}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 10px;font-size:14px;cursor:pointer}
+
+  /* hero */
+  header{position:relative;overflow:hidden;padding:110px 0 100px;border-bottom:1px solid var(--line)}
+  header::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(to bottom,#000 30%,transparent)}
+  header::after{content:"";position:absolute;width:620px;height:620px;right:-160px;top:-220px;background:radial-gradient(circle,rgba(46,196,173,.22),transparent 65%);pointer-events:none}
+  .hero{position:relative;z-index:1;display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
+  .tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--accent-2);background:var(--accent-bg);border:1px solid rgba(46,196,173,.3);padding:6px 12px;border-radius:999px;margin-bottom:22px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(46,196,173,.2)}
+  h1{font-size:clamp(40px,6vw,64px);line-height:1.05;letter-spacing:-1.5px;font-weight:800}
+  h1 .hl{color:var(--accent)}
+  .role{font-size:clamp(18px,2.2vw,22px);color:var(--muted);margin:14px 0 18px;font-weight:500}
+  .lead{color:var(--muted);max-width:560px}
+  .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-weight:600;font-size:15px;border:1px solid var(--line);transition:.2s;white-space:nowrap}
+  .btn svg{width:18px;height:18px}
+  .btn.primary{background:var(--accent);color:#06221d;border-color:var(--accent)}
+  .btn.primary:hover{background:var(--accent-2)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent-2)}
+  .code-card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 20px 50px rgba(0,0,0,.35);font-size:13.5px;overflow:hidden}
+  .code-top{display:flex;gap:7px;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .code-top i{width:11px;height:11px;border-radius:50%;background:#2a3d57}
+  .code-top i:first-child{background:#e8676b}.code-top i:nth-child(2){background:#e5b454}.code-top i:nth-child(3){background:#48c774}
+  pre{padding:18px 20px;line-height:1.75;color:#c6d4e2;white-space:pre-wrap}
+  .k{color:#7fb7ff}.s{color:#9be5a5}.c{color:var(--dim)}.t{color:var(--accent-2)}
+
+  /* sections */
+  section{padding:90px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:13px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:10px}
+  h2{font-size:clamp(28px,3.4vw,36px);letter-spacing:-.8px;margin-bottom:40px;font-weight:800}
+
+  .about{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:start}
+  .about p{color:var(--muted);margin-bottom:16px}
+  .about p strong{color:var(--text);font-weight:600}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .stat b{display:block;font-size:30px;color:var(--accent);font-weight:800;letter-spacing:-1px;line-height:1.1}
+  .stat span{font-size:13.5px;color:var(--muted)}
+
+  .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .skill{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .skill .ic{width:42px;height:42px;border-radius:10px;background:var(--accent-bg);display:grid;place-items:center;margin-bottom:16px;color:var(--accent)}
+  .skill .ic svg{width:22px;height:22px}
+  .skill h3{font-size:17px;margin-bottom:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{font-size:12.5px;padding:4px 10px;border-radius:999px;background:#1a2d46;color:#c4d3e2;border:1px solid #243a57}
+
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:-16px 0 28px}
+  .filters button{font:inherit;font-size:14px;background:transparent;color:var(--muted);border:1px solid var(--line);padding:7px 16px;border-radius:999px;cursor:pointer;transition:.2s}
+  .filters button:hover{color:var(--text)}
+  .filters button.on{background:var(--accent);color:#06221d;border-color:var(--accent);font-weight:600}
+  .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .proj{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;transition:.25s}
+  .proj:hover{background:var(--card-h);border-color:#2d4a6b;transform:translateY(-3px)}
+  .proj.hide{display:none}
+  .proj-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:6px}
+  .proj h3{font-size:19px;line-height:1.3}
+  .course{font-size:13px;color:var(--accent-2);margin-bottom:12px}
+  .proj p{color:var(--muted);font-size:15px;margin-bottom:18px;flex:1}
+  .proj .chips{margin-bottom:18px}
+  .proj-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--accent)}
+  .proj-link:hover{color:var(--accent-2)}
+  .proj-link svg{width:16px;height:16px}
+  .note{font-size:13px;color:var(--dim)}
+  .star{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#06221d;background:var(--accent);padding:3px 8px;border-radius:6px;white-space:nowrap}
+
+  .timeline{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .timeline h3.col{font-size:15px;color:var(--muted);font-weight:600;margin-bottom:18px;text-transform:uppercase;letter-spacing:1.5px}
+  .item{position:relative;padding:0 0 26px 26px;border-left:2px solid var(--line)}
+  .item:last-child{padding-bottom:0}
+  .item::before{content:"";position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+  .item .when{font-size:13px;color:var(--accent-2)}
+  .item h4{font-size:17px;margin:2px 0}
+  .item .where{color:var(--muted);font-size:14.5px;margin-bottom:8px}
+  .item ul{color:var(--muted);font-size:14.5px;padding-left:18px}
+  .item li{margin-bottom:4px}
+
+  .contact{text-align:center;border-bottom:none}
+  .contact h2{margin-bottom:14px}
+  .contact p{color:var(--muted);max-width:520px;margin:0 auto 30px}
+  .contact .btns{justify-content:center}
+  footer{padding:28px 0;text-align:center;color:var(--dim);font-size:13.5px;border-top:1px solid var(--line)}
+
+  @media (max-width:900px){
+    .hero,.about,.timeline{grid-template-columns:1fr}
+    .code-card{max-width:560px}
+    .skills{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 16px}
+    .links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg2);border-bottom:1px solid var(--line)}
+    .links.open{display:flex}
+    .links a{padding:14px 16px;border-top:1px solid var(--line)}
+    .menu-btn{display:block}
+    header{padding:70px 0 64px}
+    section{padding:64px 0}
+    .skills,.projects{grid-template-columns:1fr}
+    .btn{flex:1;justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">Iqra<span>.</span></a>
+    <button class="menu-btn" aria-label="Open menu" onclick="document.querySelector('.links').classList.toggle('open')">Menu</button>
+    <div class="links" onclick="this.classList.remove('open')">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap hero">
+    <div>
+      <div class="tag"><span class="dot"></span>Open to internships &amp; junior roles</div>
+      <h1>Hi, I'm <span class="hl">Iqra</span>.</h1>
+      <p class="role">.NET MVC Developer · SQL &amp; Database Design · Software Testing</p>
+      <p class="lead">Final-year Computer Science student at Iqra University, Karachi. I build full-stack web apps with .NET MVC, design clean relational databases, and enjoy solving problems with algorithms.</p>
+      <div class="btns">
+        <a class="btn primary" href="Iqra_CV_Public.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+          Download CV
+        </a>
+        <a class="btn ghost" href="https://github.com/iqra559" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.82 1.19 3.08 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+          GitHub
+        </a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/iqra-sattar-78a47143a" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="code-card mono" aria-hidden="true">
+      <div class="code-top"><i></i><i></i><i></i></div>
+<pre><span class="k">public class</span> <span class="t">Developer</span>
+{
+  <span class="k">string</span> Name = <span class="s">"Iqra"</span>;
+  <span class="k">string</span> Degree = <span class="s">"BS Computer Science"</span>;
+  <span class="k">string[]</span> Stack = {
+    <span class="s">".NET MVC"</span>, <span class="s">"C#"</span>,
+    <span class="s">"SQL Server"</span>, <span class="s">"Java"</span>
+  };
+  <span class="c">// strongest at:</span>
+  <span class="k">string</span> Focus = <span class="s">"Databases &amp; Algorithms"</span>;
+}</pre>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h2>A little about me</h2>
+    <div class="about">
+      <div>
+        <p>I'm a <strong>final-year BS Computer Science student at Iqra University</strong>, Karachi. I work across the full stack with <strong>.NET MVC</strong>, but my favourite part of any project is the database: designing clean, normalized schemas and writing SQL that is fast and easy to read.</p>
+        <p>I also enjoy <strong>algorithms and problem solving</strong>, and I've completed an elective in <strong>Software Quality Assurance</strong>, where I tested my own project with a proper test plan, test cases and bug tracking.</p>
+        <p>Alongside my studies, I've spent <strong>nearly five years teaching</strong> Sindh Board and Federal Board students. It taught me to explain complex ideas simply, stay patient, and communicate clearly, skills I bring to every team.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>5 yrs</b><span>Teaching experience</span></div>
+        <div class="stat"><b>8</b><span>Academic projects</span></div>
+        <div class="stat"><b>7+</b><span>Programming languages</span></div>
+        <div class="stat"><b>Final</b><span>Year, BS Computer Science</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">Skills</div>
+    <h2>What I work with</h2>
+    <div class="skills">
+      <div class="skill">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg></div>
+        <h3>Web Development</h3>
+        <div class="chips"><span class="chip">.NET MVC</span><span class="chip">C#</span><span class="chip">HTML &amp; CSS</span><span class="chip">JavaScript</span><span class="chip">Bootstrap</span></div>
+      </div>
+      <div class="skill">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg></div>
+        <h3>Databases</h3>
+        <div class="chips"><span class="chip">SQL Server</span><span class="chip">MySQL</span><span class="chip">Database Design</span><span class="chip">Normalization</span><span class="chip">Stored Procedures</span><span class="chip">Triggers</span></div>
+      </div>
+      <div class="skill">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div>
+        <h3>Programming</h3>
+        <div class="chips"><span class="chip">Java</span><span class="chip">C / C++</span><span class="chip">Python</span><span class="chip">Assembly</span><span class="chip">Data Structures</span><span class="chip">Algorithms</span></div>
+      </div>
+      <div class="skill">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Testing &amp; Tools</h3>
+        <div class="chips"><span class="chip">Software QA</span><span class="chip">Test Cases</span><span class="chip">Manual Testing</span><span class="chip">Git &amp; GitHub</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">Projects</div>
+    <h2>Things I've built</h2>
+    <div class="filters" role="tablist">
+      <button class="on" data-f="all">All</button>
+      <button data-f="db">Database</button>
+      <button data-f="algo">Algorithms</button>
+      <button data-f="other">Testing &amp; Other</button>
+    </div>
+    <div class="projects">
+
+      <article class="proj" data-c="db">
+        <div class="proj-head"><h3>Smart Disaster Response &amp; Resource Allocation System</h3><span class="star">Featured</span></div>
+        <div class="course">Database Systems</div>
+        <p>A SQL Server database that manages disasters, affected areas, relief resources and their allocation to response teams. It automates allocation and reporting with stored procedures and triggers.</p>
+        <div class="chips"><span class="chip">SQL Server</span><span class="chip">T-SQL</span><span class="chip">Joins</span><span class="chip">Stored Procedures</span><span class="chip">Triggers</span></div>
+        <a class="proj-link" href="https://github.com/iqra559/smart-disaster-response-db" target="_blank" rel="noopener">View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+      </article>
+
+      <article class="proj" data-c="db">
+        <div class="proj-head"><h3>Music Streaming Player Database</h3></div>
+        <div class="course">Database Systems</div>
+        <p>A relational database for a music streaming platform covering users, songs, artists, albums and playlists, with SQL queries for searching songs and managing playlists.</p>
+        <div class="chips"><span class="chip">SQL Server</span><span class="chip">ERD</span><span class="chip">Normalization</span><span class="chip">SQL Queries</span></div>
+        <a class="proj-link" href="https://github.com/iqra559/music-streaming-player-db" target="_blank" rel="noopener">View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+      </article>
+
+      <article class="proj" data-c="algo">
+        <div class="proj-head"><h3>E-Commerce Product Search Engine</h3></div>
+        <div class="course">Design &amp; Analysis of Algorithms</div>
+        <p>A product search engine in C that sorts a product catalog with Merge Sort and Quick Sort, then compares both algorithms' time complexity and real performance on different input sizes.</p>
+        <div class="chips"><span class="chip">C</span><span class="chip">Merge Sort</span><span class="chip">Quick Sort</span><span class="chip">Big-O Analysis</span></div>
+        <span class="note">Academic project</span>
+      </article>
+
+      <article class="proj" data-c="other">
+        <div class="proj-head"><h3>Software Quality Assurance Testing</h3></div>
+        <div class="course">SQA (Elective)</div>
+        <p>Professional-level testing of my own project: a test plan, test cases covering normal, boundary and invalid inputs, functional testing, and logging and re-testing defects until they were fixed.</p>
+        <div class="chips"><span class="chip">Test Planning</span><span class="chip">Test Cases</span><span class="chip">Functional Testing</span><span class="chip">Bug Tracking</span></div>
+        <span class="note">Academic project</span>
+      </article>
+
+      <article class="proj" data-c="algo">
+        <div class="proj-head"><h3>Personal Diary Management System</h3></div>
+        <div class="course">Data Structures</div>
+        <p>A console-based diary manager to add, view, search and organize entries, built with arrays, linked lists and hash maps, with sorting to arrange entries.</p>
+        <div class="chips"><span class="chip">Arrays</span><span class="chip">Linked Lists</span><span class="chip">Hash Maps</span><span class="chip">Sorting</span></div>
+        <span class="note">Academic project</span>
+      </article>
+
+      <article class="proj" data-c="algo">
+        <div class="proj-head"><h3>Interactive Sorting in Assembly</h3></div>
+        <div class="course">Computer Organization &amp; Assembly Language</div>
+        <p>An interactive assembly program that takes numbers from the user and sorts them, showing how sorting works at the lowest level with registers and memory.</p>
+        <div class="chips"><span class="chip">Assembly</span><span class="chip">Registers</span><span class="chip">Sorting</span></div>
+        <span class="note">Academic project</span>
+      </article>
+
+      <article class="proj" data-c="other">
+        <div class="proj-head"><h3>Unit Converter</h3></div>
+        <div class="course">Object-Oriented Programming</div>
+        <p>An object-oriented converter for weight, temperature, length and currency, designed with classes and objects for clean, reusable code.</p>
+        <div class="chips"><span class="chip">OOP</span><span class="chip">Classes &amp; Objects</span></div>
+        <span class="note">Academic project</span>
+      </article>
+
+      <article class="proj" data-c="other">
+        <div class="proj-head"><h3>Multiplayer Futsal Game</h3></div>
+        <div class="course">Scratch</div>
+        <p>A two-player futsal game with player controls and scoring logic, my first taste of game logic and event-driven programming.</p>
+        <div class="chips"><span class="chip">Scratch</span><span class="chip">Game Logic</span></div>
+        <span class="note">Academic project</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow">Journey</div>
+    <h2>Experience &amp; Education</h2>
+    <div class="timeline">
+      <div>
+        <h3 class="col">Experience</h3>
+        <div class="item">
+          <div class="when">2021 – Present</div>
+          <h4>Home Tutor</h4>
+          <div class="where">Self-Employed · Karachi</div>
+          <ul>
+            <li>Teaching Sindh Board and Federal Board students for nearly five years.</li>
+            <li>Plan lessons, prepare notes and run regular tests to track progress.</li>
+            <li>Explain difficult concepts simply, adapting to each student's pace.</li>
+            <li>Prepare students for board exams and keep parents updated.</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h3 class="col">Education</h3>
+        <div class="item">
+          <div class="when">2023 – Present · Final Year</div>
+          <h4>BS Computer Science</h4>
+          <div class="where">Iqra University, Karachi</div>
+        </div>
+        <div class="item">
+          <div class="when">2021 – 2023</div>
+          <h4>Intermediate, Pre-Medical</h4>
+          <div class="where">Khatoon-e-Pakistan Girls College, Karachi</div>
+        </div>
+        <div class="item">
+          <div class="when">2021</div>
+          <h4>Matriculation</h4>
+          <div class="where">Howard Grammar School, Karachi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h2>Let's work together</h2>
+    <p>I'm looking for internship and junior developer or QA roles. If you have an opportunity or just want to connect, my inbox is open.</p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:iqra88372@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+        iqra88372@gmail.com
+      </a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/iqra-sattar-78a47143a" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/iqra559" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="yr">2026</span> Iqra · Built with HTML &amp; CSS · Karachi, Pakistan</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const btns = document.querySelectorAll('.filters button');
+  btns.forEach(b => b.addEventListener('click', () => {
+    btns.forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    const f = b.dataset.f;
+    document.querySelectorAll('.proj').forEach(p => {
+      p.classList.toggle('hide', f !== 'all' && p.dataset.c !== f);
+    });
+  }));
+</script>
+</body>
+</html>
